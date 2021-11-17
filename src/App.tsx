@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Empty } from 'antd';
+import ProTable from '@ant-design/pro-table';
+import type { ProColumns } from '@ant-design/pro-table';
+import 'antd/dist/antd.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type TableItem = {
+  item?: string;
+  price?: string;
 }
 
-export default App;
+const columns: ProColumns<TableItem>[] = [
+  {
+    title: '商品名',
+    key: 'item',
+    dataIndex: 'item',
+  },{
+    title: '金額',
+    key: 'price',
+    dataIndex: 'price',
+  }
+]
+
+const Index = ():JSX.Element => {
+  return (
+    <>
+      <ProTable 
+        columns={columns}
+      />
+    </>
+  )
+};
+export default Index;
